@@ -32,7 +32,7 @@ MustacheAjax.loadTemplate = function(template, callback) {
     let url = 'templates/' + template + '.mustache';
 
     if(cache.hasOwnProperty(url)) {
-        if (typeof callback === "function")
+        if (callback !== null && typeof callback === "function")
             callback(cache[url]);
     } else {
         let request = new XMLHttpRequest();
@@ -41,7 +41,8 @@ MustacheAjax.loadTemplate = function(template, callback) {
         request.onload = function() {
             if(request.status >= 200 && request.status < 400) {
                 cache[url] = request.responseText;
-                callback(cache[url]);
+                if (callback !== null && typeof callback === "function")
+                    callback(cache[url]);
             } else
                 console.error('Failed to load template ' + template);
         };
@@ -54,9 +55,30 @@ MustacheAjax.loadTemplate = function(template, callback) {
     }
 }
 
+MustacheAjax.loadTemplates = function(templates, callback) {
+    if(templates === null || !Array.isArray(templates)) {
+        console.error('Failed to load templates; no templates provided');
+        return;
+    }
+
+    let size = templates.length;
+
+    templates.forEach(function(element) {
+        MustacheAjax.loadTemplate(element, function() {
+            size--;
+            if(size == 0)
+                if (callback !== null && typeof callback === "function") {
+                    callback(cache);  
+                    callback = null;
+                }
+        });
+    });
+}
+
 MustacheAjax.render = function(template, view, callback) {
     this.loadTemplate(template, function(template) {
-        callback(Mustache.render(template, view));
+        if (callback !== null && typeof callback === "function")
+            callback(Mustache.render(template, view));
     });
 }
 
@@ -70,7 +92,8 @@ MustacheAjax.html = function(id, template, view, callback) {
 
     this.render(template, view, function(renderedTemplate) {
         element.innerHTML = renderedTemplate;
-        callback();
+        if (callback !== null && typeof callback === "function")
+            callback();
     });
 }
 
@@ -84,7 +107,8 @@ MustacheAjax.append = function(id, template, view, callback) {
 
     this.render(template, view, function(renderedTemplate) {
         element.innerHTML += renderedTemplate;
-        callback();
+        if (callback !== null && typeof callback === "function")
+            callback();
     });
 }
 
