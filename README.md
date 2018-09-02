@@ -8,7 +8,7 @@ Plugin for Mustache that automatically loads required templates via ajax.
 
 ## Installation
 
-Just add one of the following scripts to your website:
+Just add one of the following scripts to your website (and also [Mustache](https://github.com/janl/mustache.js) obviously):
 
 #### Not minified
 ```html
