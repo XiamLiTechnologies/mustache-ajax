@@ -1,5 +1,5 @@
 /**
- * mustache-ajax 1.0.0 - https://github.com/XiamLiTechnologies/mustache-ajax
+ * mustache-ajax 1.1.0 - https://github.com/XiamLiTechnologies/mustache-ajax
  * Copyright (C) 2018 XiamLi Technologies - XiamLi.com
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy

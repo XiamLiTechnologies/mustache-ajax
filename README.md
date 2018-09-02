@@ -1,6 +1,6 @@
 # mustache-ajax
 
-[![Release](https://img.shields.io/badge/release-1.0.0-brightgreen.svg)]()
+[![Release](https://img.shields.io/badge/release-1.1.0-brightgreen.svg)]()
 [![License](https://img.shields.io/github/license/XiamLiTechnologies/mustache-ajax.svg)]()
 [![Maintenance](https://img.shields.io/maintenance/yes/2018.svg)]()
 
@@ -12,12 +12,12 @@ Just add one of the following scripts to your website (and also [Mustache](https
 
 #### Not minified
 ```html
-<script src="https://cdn.xiamli.com/mustache-ajax-1.0.0.js" integrity="sha384-UsEdw9F6sEATWQBOkTohDTdB+hJxFXQsqCrcmFbDl8OP4zAwOUQMTKFGp5PN+y9r" crossorigin="anonymous"></script>
+<script src="https://cdn.xiamli.com/mustache-ajax-1.1.0.js" integrity="sha384-zJbfM01a/E65lSRze+E52Kz3xZS3aJxZL16VcM2t+e+UHNlN4IqL5Zc+TqubqpE/" crossorigin="anonymous"></script>
 ```
 
 #### Minified
 ```html
-<script src="https://cdn.xiamli.com/mustache-ajax-1.0.0.min.js" integrity="sha384-rfF4oGs5dvA6o5zV6N8vy8PQB806rHfwS36dfSwE+GnImBFnXQGwPciXtEtsYg9w" crossorigin="anonymous"></script>
+<script src="https://cdn.xiamli.com/mustache-ajax-1.1.0.min.js" integrity="sha384-mFMlxhMZno3UApG/mV5UzloZ4AruUjJpL7UWWrr+wbSYd1pGbRjsFhPFjmfkxkno" crossorigin="anonymous"></script>
 ```
 
 ## Usage
@@ -50,7 +50,7 @@ would result in:
 
 ## Latest Release
 
-Version 1.0.0
+Version 1.1.0
 
 # Author
   - Dorian H. - <dorian@xiamli.com> / <dorian@d0x7.com> - https://d0x7.com
