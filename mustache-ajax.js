@@ -25,27 +25,23 @@ if(!window.Mustache) {
     throw 'Mustache needs to be loaded first';
 }
 
+const MustacheAjax = {};
 const cache = {};
 
-window.Mustache.html = function(id, template, view) {
+MustacheAjax.loadTemplate = function(template, callback) {
     let url = 'templates/' + template + '.mustache';
-    let element = document.getElementById(id);
 
-    if(element === null) {
-        console.error('Tried to render template on non existing element with id ' + id);
-        return;
-    }
-
-    if(cache.hasOwnProperty(url))
-        element.innerHTML = Mustache.render(cache[url], view);
-    else {
+    if(cache.hasOwnProperty(url)) {
+        if (typeof callback === "function")
+            callback(cache[url]);
+    } else {
         let request = new XMLHttpRequest();
         request.open('GET', url, true);
 
         request.onload = function() {
             if(request.status >= 200 && request.status < 400) {
                 cache[url] = request.responseText;
-                element.innerHTML = Mustache.render(cache[url], view);
+                callback(cache[url]);
             } else
                 console.error('Failed to load template ' + template);
         };
@@ -56,4 +52,40 @@ window.Mustache.html = function(id, template, view) {
 
         request.send();
     }
-};
+}
+
+MustacheAjax.render = function(template, view, callback) {
+    this.loadTemplate(template, function(template) {
+        callback(Mustache.render(template, view));
+    });
+}
+
+MustacheAjax.html = function(id, template, view, callback) {
+    let element = document.getElementById(id);
+    
+    if(element === null) {
+        console.error('Tried to render template on non existing element with id ' + id);
+        return;
+    }
+
+    this.render(template, view, function(renderedTemplate) {
+        element.innerHTML = renderedTemplate;
+        callback();
+    });
+}
+
+MustacheAjax.append = function(id, template, view, callback) {
+    let element = document.getElementById(id);
+    
+    if(element === null) {
+        console.error('Tried to render template on non existing element with id ' + id);
+        return;
+    }
+
+    this.render(template, view, function(renderedTemplate) {
+        element.innerHTML += renderedTemplate;
+        callback();
+    });
+}
+
+window.MustacheAjax = MustacheAjax;
