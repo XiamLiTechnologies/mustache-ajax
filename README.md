@@ -37,7 +37,7 @@ templates/aTemplate.mustache:
 
 javascript:
 ```javascript
-Mustache.html('someDiv', 'aTemplate', {name: 'Dorian'})
+MustacheAjax.html('someDiv', 'aTemplate', {name: 'Dorian'})
 ```
 
 would result in:
