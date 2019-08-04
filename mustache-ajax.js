@@ -28,8 +28,10 @@ if(!window.Mustache) {
 const MustacheAjax = {};
 const cache = {};
 
+MustacheAjax.useAbsolutePaths = false;
+
 MustacheAjax.loadTemplate = function(template, callback) {
-    let url = 'templates/' + template + '.mustache';
+    let url = (MustacheAjax.useAbsolutePaths ? '/' : '') + 'templates/' + template + '.mustache';
 
     if(cache.hasOwnProperty(url)) {
         if (callback !== null && typeof callback === "function")

@@ -2,7 +2,7 @@
 
 [![Release](https://img.shields.io/badge/release-1.1.0-brightgreen.svg)]()
 [![License](https://img.shields.io/github/license/XiamLiTechnologies/mustache-ajax.svg)]()
-[![Maintenance](https://img.shields.io/maintenance/yes/2018.svg)]()
+[![Maintenance](https://img.shields.io/maintenance/yes/2019.svg)]()
 
 Plugin for Mustache that automatically loads required templates via ajax.
 
